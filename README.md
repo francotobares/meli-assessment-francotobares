@@ -7,6 +7,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Launches the test runner in the interactive watch mode.
 
+### `Desarrollo del proyecto y herramientas utilizadas`
 
 En el proyecto nos encontramos con 3 componentes simples y modularizados que manejan la lógica y view del proyecto
 
