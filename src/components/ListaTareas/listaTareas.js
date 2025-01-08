@@ -17,6 +17,7 @@ function ListaTareas() {
         }
     };
 
+    //modifica el estado de completa o no completa segun su valor inicial
     const toggleTask = (index) => {
         const updatedTasks = tasks.map((task, i) =>
             i === index ? { ...task, completed: !task.completed } : task

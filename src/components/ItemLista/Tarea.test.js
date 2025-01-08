@@ -1,39 +1,53 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Tarea from './itemLista';
+import '@testing-library/jest-dom';
 
 describe('Tarea Component', () => {
-    test('renders the task title', () => {
-        const mockTask = { title: 'Test Task', completed: false };
-        render(<Tarea task={mockTask} />);
-        expect(screen.getByText('Test Task')).toBeInTheDocument();
-    });
+  it('renders the task title correctly and capitalizes the first letter', () => {
+    const task = { title: 'test task', completed: false };
+    const mockToggleTask = jest.fn();
+    const mockDeleteTask = jest.fn();
 
-    test('applies line-through style when completed', () => {
-        const mockTask = { title: 'Completed Task', completed: true };
-        render(<Tarea task={mockTask} />);
-        const taskElement = screen.getByText('Completed Task');
-        expect(taskElement).toHaveClass('line-through');
-    });
+    render(<Tarea task={task} toggleTask={mockToggleTask} deleteTask={mockDeleteTask} />);
+    
+    const taskTitle = screen.getByText('Test task');
+    expect(taskTitle).toBeInTheDocument();
+  });
 
-    test('calls toggleTask when task is clicked', () => {
-        const mockTask = { title: 'Clickable Task', completed: false };
-        const toggleTaskMock = jest.fn();
-        render(<Tarea task={mockTask} toggleTask={toggleTaskMock} />);
+  it('applies the correct styles when task is completed', () => {
+    const task = { title: 'completed task', completed: true };
+    const mockToggleTask = jest.fn();
+    const mockDeleteTask = jest.fn();
 
-        const taskElement = screen.getByText('Clickable Task');
-        fireEvent.click(taskElement);
+    render(<Tarea task={task} toggleTask={mockToggleTask} deleteTask={mockDeleteTask} />);
 
-        expect(toggleTaskMock).toHaveBeenCalledTimes(1);
-    });
+    const taskElement = screen.getByText('Completed task');
+    expect(taskElement).toHaveClass('text-gray-500');
+  });
 
-    test('calls deleteTask when delete button is clicked', () => {
-        const mockTask = { title: 'Deletable Task', completed: false };
-        const deleteTaskMock = jest.fn();
-        render(<Tarea task={mockTask} deleteTask={deleteTaskMock} />);
+  it('calls toggleTask when checkbox is clicked', () => {
+    const task = { title: 'Test task', completed: false };
+    const mockToggleTask = jest.fn();
+    const mockDeleteTask = jest.fn();
 
-        const deleteButton = screen.getByText('Eliminar');
-        fireEvent.click(deleteButton);
+    render(<Tarea task={task} toggleTask={mockToggleTask} deleteTask={mockDeleteTask} />);
 
-        expect(deleteTaskMock).toHaveBeenCalledTimes(1);
-    });
+    const checkbox = screen.getByRole('checkbox');
+    fireEvent.click(checkbox);
+    
+    expect(mockToggleTask).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls deleteTask when delete button is clicked', () => {
+    const task = { title: 'Test task', completed: false };
+    const mockToggleTask = jest.fn();
+    const mockDeleteTask = jest.fn();
+
+    render(<Tarea task={task} toggleTask={mockToggleTask} deleteTask={mockDeleteTask} />);
+
+    const deleteButton = screen.getByLabelText('Delete Task');
+    fireEvent.click(deleteButton);
+    
+    expect(mockDeleteTask).toHaveBeenCalledTimes(1);
+  });
 });

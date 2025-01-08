@@ -1,6 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/solid';
 
 function Tarea({ task, toggleTask, deleteTask }) {
+    //funcion para hacer mayuscula la primer letra (podria estar tambien separada en otro file de utils si poseyera mas funciones relacionadas a modificar astrings)
     const capitalizeFirstLetter = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     };
@@ -24,10 +25,12 @@ function Tarea({ task, toggleTask, deleteTask }) {
             </span>
             <button
                 onClick={deleteTask}
-                className="text-red-500 hover:text-red-700 hover:bg-red-100 p-2 rounded-full transition"
+                aria-label="Delete Task"
+                className="text-red-500 hover:text-red-700 hover:bg-red-100 px-2 py-1 rounded-lg"
             >
                 <TrashIcon className="h-5 w-5" />
             </button>
+
         </div>
     );
 }

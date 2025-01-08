@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 function HeaderTareas({ onAddTask }) {
@@ -7,18 +6,19 @@ function HeaderTareas({ onAddTask }) {
     const handleInputChange = (event) => {
         setTaskInput(event.target.value);
     };
-
+    
+    //funcion para agregar una nueva task con el click enter como valor adicional
     const handleKeyPress = (event) => {
         if (event.key === 'Enter' && taskInput.trim()) {
             onAddTask(taskInput);
-            setTaskInput(''); 
+            setTaskInput('');
         }
     };
 
     const handleClick = () => {
         if (taskInput.trim()) {
-            onAddTask(taskInput); 
-            setTaskInput(''); 
+            onAddTask(taskInput);
+            setTaskInput('');
         }
     };
 
@@ -34,6 +34,7 @@ function HeaderTareas({ onAddTask }) {
             />
             <button
                 onClick={handleClick}
+                aria-label="Add New Task"
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
             >
                 Agregar
