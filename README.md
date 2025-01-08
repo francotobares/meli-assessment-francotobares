@@ -1,11 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -19,52 +11,25 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+En el proyecto nos encontramos con 3 compontentes simples y modularizados que manejan la logica y view del proyecto
+-El ListaTareas que se encarga de listar los elementos y displayear el header con sus funciones para el correcto funcionamient
+-El HeaderTareas que es la seccion de boton agregar e input modularizado para futuras modificaciones sobre el header
+-El ItemLista, tambien una modularizacion de los elementos que luego se dispayean sobre el componente ListaTareas
+La idea es que sea facil de leer y de mantener, sin que tampoco sea una infinita minimalizacion de los componentes teniendo sentido y cohecion en las tareas que le corresponde a cada uno 
+Por el lado del testing, se generaron 3 unit test para cada componente en el que se testean las tareas escenciales de cada componente. Se utilizo la libreria react testing } library para hacer los mismos
+Con respecto al manejo de estados, se opto por mantener los estados locales sin utilizar una herramienta de manejo de estado global, ya que para el tamaño de la app y las funciones que tenia, 
+ubiera sido redundante utilizar alguna herramienta como context o redux. Sin embargo se agrego como adicional un local storage que permitiese al usuario poder cerrar el navegador y abrirlo o 
+actualizar la pagina y poder seguir manteniendo la lista de tareas con sus estados. Transformandolo en una funcionalidad mas simple y acorde al tamaño del proyecto
+Si bien es una aplicacion muy sencilla se abordaron elementos como un listener en el header para permitir tener un evento con la tecla enter y facilitar la interaccion del usuario
+Utilize tailwind como herramienta de css ya que soluciona muchos estilos y los estandariza para que toda la app tenga una misma linea de estilo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Como buenas practicas podemos nombrar:
+La modularizacion de los elementos para su facilidad de uso y lectura
+Un diseño responsivo gracias a tailwind 
+Mejoras de accesibilidad como aria-label en los botones para lectores de pantalla
+Testing sobre las funcionalidades principales( en estas encontramos test desde que se haya encontrado el clic, que se hayan eliminado los elementos cuando debieran o que correctamente se llame al localstorage . Todas tareas que buscan encontrar errores en su funcionalidad individual)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Se documento extra solo en las funciones que podian llegar a ser menos autoexplicativas
+Lo mas demandante fue estilizarlo para que fuese intuitivo pero sin ser demasiado simple
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
